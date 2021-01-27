@@ -42,8 +42,8 @@ app.get('/loading',function(req,res){
 
         var title = it["snippet"]["title"];
         var photo = it.snippet.thumbnails.medium.url;
-        
-        res.render(__dirname+"/download.ejs",{title : title, photo : photo, id: url})
+        var ver = req.query.ver
+        res.render(__dirname+"/download.ejs",{title : title, photo : photo, id: url,ver:ver})
        
         
         
