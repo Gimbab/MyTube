@@ -32,7 +32,10 @@ body{text-align:center;}
 .yui-t1 #yui-main .yui-b{
     margin-left:13.3207em;*margin-left:13.0106em;
 }
-
+body{
+        background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/full-bloom.png);
+        text-align: center;
+      }
 .yui-t2 .yui-b {
 	float:left;
     width:13.8456em;*width:13.512em;}
