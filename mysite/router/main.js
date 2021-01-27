@@ -39,7 +39,6 @@ module.exports = function(app)
             youtubedl.exec(url, ['-f', format, '-o', outpath], {},(err, data) => {
                 if(err)return console.error(err);
                 else {
-                    console.log('sex');
                     res.redirect('/download?id=' + id + '&ext=' + ext);
                 }
             });
