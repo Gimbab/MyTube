@@ -3,14 +3,14 @@ const http = require('http')
 const app = express();
 const server = http.createServer(app)
 const fs = require('fs')
+var ejs = require('ejs');
 
 var Youtube = require('youtube-node');
 var youtube = new Youtube();
 
-app.set('view engine', 'ejs')
-app.engine('html', require('ejs').renderFile)
 
-youtube.setKey('AIzaSyDiIiJvN4NmTirr3IUca1a2_iT8H01RaGg');//api키 입력
+
+youtube.setKey('AIzaSyAsCuGQcXVJy2qhmthT8GbNHdVvE4uSFhE');//api키 입력
 let code ="a"
 app.use('/css',express.static('./static/css'))
 app.use('/js',express.static('./static/js'))
@@ -43,7 +43,21 @@ app.get('/loading',function(req,res){
         var title = it["snippet"]["title"];
         var photo = it.snippet.thumbnails.medium.url;
         var ver = req.query.ver
-        res.render(__dirname+"/download.ejs",{title : title, photo : photo, id: url,ver:ver})
+        fs.readFile('./static/download.ejs', 'utf8', function(err, data) {
+             res.writeHead(200, { 'Content-Type' : 'text/html' }
+             ); 
+          res.end(ejs.render(data, {title : title, photo : photo, id: url,ver:ver })); });
+
+
+        // fs.readFile('./static/download.ejs',(err,data)=>{
+        //     if(err){
+        //         res.send('에러')
+        //     }else{
+        //         res.writeHead(200,{'content-Type':'text/html'})
+        //         res.write(data)
+        //         res.end(ejs.render(data,{title : title, photo : photo, id: url,ver:ver}))
+        //     }
+        // })
        
         
         
